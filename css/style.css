@@ -1,0 +1,56 @@
+body{
+    background-image: url(../img/fundo.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+main {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    background-color: #0D3155;
+    color: white;
+    font-size: 15px;
+    border-color: transparent;
+    border-radius: 17px;
+    padding-inline: 3%;
+    padding-block: 0.7%;
+}
+
+.register{
+    background-color: #0D3155;
+    box-shadow: black;
+    width: 25%;
+    padding-inline: 2%;
+    padding-block: 2%;
+    border-radius: 20px;
+    min-height: 400px;
+}
+
+.form_cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input{
+    padding: 1%;
+    font-size: 18px;
+    border-radius: 10px;
+    border-color: transparent;
+    padding-block: 2%;
+}
+
+h2{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-bottom: 10%;
+}
