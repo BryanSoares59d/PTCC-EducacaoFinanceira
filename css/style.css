@@ -246,3 +246,69 @@ footer{
         text-align: center;
     }
 }
+
+/* FUNDO DA PÁGINA DE REGISTRO */
+.bg-register{
+    background-image: url('../img/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* BOTÃO VOLTAR */
+.rgt_log{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #16E28A;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* CONTAINER DO FORM */
+.register{
+    width: 100%;
+    max-width: 400px;
+    margin: 120px auto;
+    background: rgba(10, 37, 64, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* TÍTULO */
+.register h2{
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.form_cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* INPUTS */
+.form_cadastro input,
+.form_cadastro select{
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+/* BOTÃO */
+.form_cadastro input[type="submit"]{
+    background: #16E28A;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form_cadastro input[type="submit"]:hover{
+    opacity: 0.8;
+}

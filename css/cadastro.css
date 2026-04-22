@@ -1,0 +1,87 @@
+/* RESET (mantendo padrão do seu style) */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Inter", sans-serif;
+}
+
+/* FUNDO */
+.bg-register{
+    background-image: url('../img/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+/* BOTÃO VOLTAR */
+.rgt_log{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #16E28A;
+    color: black;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* CONTAINER CENTRAL */
+.register{
+    width: 100%;
+    max-width: 400px;
+    margin: 120px auto;
+    background: rgba(10, 37, 64, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* TÍTULO */
+.register h2{
+    color: white;
+    margin-bottom: 25px;
+}
+
+/* FORM */
+.form_cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* INPUTS */
+.form_cadastro input,
+.form_cadastro select{
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* FOCO */
+.form_cadastro input:focus,
+.form_cadastro select:focus{
+    outline: 2px solid #16E28A;
+}
+
+/* BOTÃO */
+.form_cadastro input[type="submit"]{
+    background-color: #16E28A;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form_cadastro input[type="submit"]:hover{
+    opacity: 0.85;
+}
