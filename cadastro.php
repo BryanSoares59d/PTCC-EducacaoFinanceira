@@ -9,7 +9,7 @@
 </head>
 <body class="bg-register">
 
-    <button class="rgt_log">Voltar</button>
+    <a href="home.php"><button class="rgt_log">Voltar</button></a>
 
     <main>
         <div class="register">
