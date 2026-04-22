@@ -7,16 +7,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-color: #F3F4F6;">
-    <button class="rgt_log">Voltar</button>
+    <a href="home.php"><button class="rgt_log">Voltar</button></a>
     <main>
     <div class="register">
         <h2>CONECTE-SE</h2>
-        <form class="form_cadastro" action="" method="">
-            <input type="email" placeholder="Email ou nome de usuário" required>
-            <input type="password" placeholder="Senha" required min="6" max="12">
+        <form class="form_cadastro" action="processa_login.php" method="POST">
+
+            <input type="email" name="email" placeholder="Email ou nome de usuário" required>
+
+            <input type="password" name="senha" placeholder="Senha" required minlength="6" maxlength="12">
+
             <br><br>
             <input type="submit" value="Seguir">
-        </form>
+
+</form>
     </div>
     </main>
 </body>

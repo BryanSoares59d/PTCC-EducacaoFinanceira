@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Financeiro</title>
+  <link rel="stylesheet" href="css/calculadora.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo">
+    </div>
+    <nav>
+      <a href="#">🏠 Home</a>
+      <a href="#">🎓 Educação</a>
+      <a class="active" href="#">🧮 Calculadora</a>
+      <a href="#">📊 Investimentos</a>
+      <a href="">⚙️ Configurações</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <nav class="menu">
+        <a href="#">Home</a>
+        <a href="#">Educação</a>
+        <a class="active" href="#">Calculadora</a>
+        <a href="#">Investimentos</a>
+      </nav>
+
+      <div class="user">
+        <span>Usuario01</span>
+        <div class="avatar"></div>
+      </div>
+    </header>
+
+    <!-- Cards -->
+    <section class="cards">
+      <div class="card">
+        <h4>Saldo Atual</h4>
+        <p class="green">R$ 5.506</p>
+      </div>
+
+      <div class="card">
+        <h4>Receita do mês</h4>
+        <p>+ R$ 2.005</p>
+      </div>
+
+      <div class="card">
+        <h4>Despesas do mês</h4>
+        <p class="red">- R$ 1.590</p>
+      </div>
+
+      <div class="card">
+        <h4>Meta do mês</h4>
+        <p class="green">75% Atingida</p>
+        <div class="progress">
+          <div class="bar" style="width:75%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content">
+
+      <div class="left">
+
+        <!-- Chart -->
+        <div class="box chart">
+          <h3>Visão Geral</h3>
+          <div class="fake-chart"></div>
+        </div>
+
+        <!-- Transactions -->
+        <div class="box">
+          <div class="box-header">
+            <h3>Últimas transações</h3>
+            <span>Ver mês →</span>
+          </div>
+
+          <ul class="transactions">
+            <li><span>➕ Salário</span><span class="green">+ R$ 1.500</span></li>
+            <li><span>➕ Transferência</span><span class="green">+ R$ 600</span></li>
+            <li><span>➖ Alimentação</span><span class="red">- R$ 450</span></li>
+            <li><span>➖ Lazer</span><span class="red">- R$ 200</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Right -->
+      <div class="right">
+
+        <div class="box">
+          <h3>Metas Financeiras</h3>
+          <p>Fundo Emergência</p>
+          <div class="progress">
+            <div class="bar" style="width:75%"></div>
+          </div>
+          <small>R$ 1.500 / R$ 2.000</small>
+          <button>Ver todas as metas</button>
+        </div>
+
+        <div class="box">
+          <h3>Desempenho de gastos</h3>
+          <ul class="legend">
+            <li><span class="dot green"></span> Receitas</li>
+            <li><span class="dot red"></span> Despesas</li>
+            <li><span class="dot dark"></span> Investimentos</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer>2025 © EtecMCM</footer>
+
+  </main>
+</div>
+
+</body>
+</html>
