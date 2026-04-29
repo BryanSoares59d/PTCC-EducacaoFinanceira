@@ -24,7 +24,7 @@ if (!isset($_SESSION['id'])) {
       <img src="img/logo.png" alt="Logo">
     </div>
     <nav>
-      <a href="#">🏠 Home</a>
+      <a href="home.php">🏠 Home</a>
       <a href="#">🎓 Educação</a>
       <a class="active" href="#">🧮 Calculadora</a>
       <a href="#">📊 Investimentos</a>
@@ -38,7 +38,7 @@ if (!isset($_SESSION['id'])) {
     <!-- Topbar -->
     <header class="topbar">
       <nav class="menu">
-        <a href="#">Home</a>
+        <a href="home.php">Home</a>
         <a href="#">Educação</a>
         <a class="active" href="#">Calculadora</a>
         <a href="#">Investimentos</a>
