@@ -350,3 +350,88 @@
   height: 100%;
   object-fit: cover;
 }
+
+.finance_form {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.finance_form input,
+.finance_form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+#listaFinanceira {
+  margin-top: 15px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 37, 64, 0.8);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_content {
+  background: #24314C;
+  padding: 30px;
+  border-radius: 16px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  animation: aparecer 0.3s ease;
+}
+
+.modal_content h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.modal_content input,
+.modal_content select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.close_btn {
+  margin-top: 10px;
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.close_btn:hover {
+  background: #c92a36;
+}
+
+@keyframes aparecer {
+  from {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}

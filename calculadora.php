@@ -107,28 +107,43 @@ if (!isset($_SESSION['id'])) {
 
       </div>
 
-      <div class="right">
+      <div class="box">
 
-        <div class="box">
-          <h3>Metas Financeiras</h3>
-          <p>Fundo Emergência</p>
-          <div class="progress">
-            <div class="bar progresso-75"></div>
-          </div>
-          <small>R$ 1.500 / R$ 2.000</small>
-          <button>Ver todas as metas</button>
-        </div>
+<h3>💰 Controle Financeiro</h3>
 
-        <div class="box">
-          <h3>Desempenho de gastos</h3>
-          <ul class="legend">
-            <li><span class="dot green"></span> Receitas</li>
-            <li><span class="dot red"></span> Despesas</li>
-            <li><span class="dot dark"></span> Investimentos</li>
-          </ul>
-        </div>
+<button class="btn_secao" onclick="abrirModal()">Adicionar movimentação</button>
 
-      </div>
+</div>
+
+<!-- MODAL -->
+<div id="modalFinanceiro" class="modal">
+
+<div class="modal_content">
+
+  <h2>Nova Movimentação</h2>
+
+  <form method="POST" action="adicionar_movimento.php">
+
+    <select name="tipo" id="tipo" required onchange="mudarCategoria()">
+        <option value="entrada">💰 Entrada (ganho)</option>
+        <option value="saida">💸 Saída (gasto)</option>
+    </select>
+
+    <input type="number" step="0.01" name="valor" placeholder="Valor (R$)" required>
+
+    <input type="text" name="descricao" placeholder="Descrição" required>
+
+    <select name="categoria" id="categoria" required></select>
+
+    <button class="btn_secao" type="submit">Salvar</button>
+
+  </form>
+
+    <button class="close_btn" onclick="fecharModal()">Fechar</button>
+
+</div>
+
+</div>
 
     </section>
 
@@ -136,6 +151,51 @@ if (!isset($_SESSION['id'])) {
 
   </main>
 </div>
+
+<script>
+const categorias = {
+    entrada: [
+        {value: "salario", text: "Salário"},
+        {value: "bonus", text: "Bônus"},
+        {value: "investimento", text: "Investimento"},
+        {value: "outros", text: "Outros"}
+    ],
+    saida: [
+        {value: "alimentacao", text: "Alimentação"},
+        {value: "contas", text: "Contas"},
+        {value: "lazer", text: "Lazer"},
+        {value: "transporte", text: "Transporte"},
+        {value: "outros", text: "Outros"}
+    ]
+};
+
+function mudarCategoria() {
+    const tipo = document.getElementById("tipo").value;
+    const select = document.getElementById("categoria");
+
+    select.innerHTML = "";
+
+    categorias[tipo].forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat.value;
+        option.textContent = cat.text;
+        select.appendChild(option);
+    });
+}
+
+// inicia ao abrir modal
+function abrirModal() {
+    document.getElementById("modalFinanceiro").style.display = "flex";
+    mudarCategoria(); // garante categoria correta ao abrir
+}
+
+function fecharModal() {
+    document.getElementById("modalFinanceiro").style.display = "none";
+}
+
+// inicia padrão
+document.addEventListener("DOMContentLoaded", mudarCategoria);
+</script>
 
 </body>
 </html>
