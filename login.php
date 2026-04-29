@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="cadastro.css">
 </head>
+<body class="bg-register">
     <a href="home.php"><button class="rgt_log">Voltar</button></a>
     <main>
     <div class="register">
@@ -18,7 +20,6 @@
 
             <br><br>
             <input type="submit" value="Seguir">
-
 </form>
     </div>
     </main>

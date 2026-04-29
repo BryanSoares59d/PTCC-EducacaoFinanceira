@@ -21,6 +21,8 @@
         </ul>
     </nav>
 
+    
+
     <div class="home_bot">
         <a href="cadastro.php"><button class="button_log">REGISTRAR</button></a>
         <a href="login.php"><button class="button_log conectar">CONECTAR</button></a>
