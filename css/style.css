@@ -6,6 +6,9 @@
 
 body{
     font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* HEADER */
@@ -190,17 +193,19 @@ p{
 }
 
 /* FOOTER */
-footer{
+footer {
     background: #0A2540;
     color: white;
-    text-align: right;
-    padding: 20px 20px 20px;
-    margin-top: -80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
 }
 
-.text_footer{
-    margin-top: 20px;
-    margin-left: 1000px;
+.text_footer {
+    margin: 0;
+    text-align: center;
 }
 
 
@@ -260,7 +265,7 @@ footer{
     position: absolute;
     top: 20px;
     left: 20px;
-    background: #16E28A;
+    background: rgb(243, 49, 49);
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
