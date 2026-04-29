@@ -13,6 +13,7 @@ body{
 
 /* HEADER */
 header{
+    z-index: 1000;
     background: #0A2540;
     position: fixed;
     top: 0;
@@ -316,4 +317,198 @@ footer {
 
 .form_cadastro input[type="submit"]:hover{
     opacity: 0.8;
+}
+
+.secao {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f2f2f2;
+}
+
+.secao.dark {
+    background: #24314C;
+    color: white;
+}
+
+.container_secao {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.secao h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.secao p {
+    margin: 0 auto 40px auto;
+    max-width: 600px;
+}
+
+.grid_cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card_info {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card_info:hover {
+    transform: translateY(-5px);
+}
+
+.card_info h3 {
+    margin-bottom: 10px;
+    color: #0A2540;
+}
+
+.card_info p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* calculadora */
+.calc_box {
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 12px;
+}
+
+.btn_secao {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: none;
+    background: #16E28A;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.secao {
+    padding: 90px 20px;
+    background: #24314C;
+    color: white;
+}
+
+.secao.light {
+    background: #eaeaea;
+    color: #0A2540;
+}
+
+.container_secao {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.secao h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.secao p {
+    font-size: 18px;
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+    opacity: 0.9;
+}
+
+/* CARDS MODERNOS */
+.grid_cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card_info {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 16px;
+    width: 260px;
+    transition: 0.3s;
+}
+
+.secao.light .card_info {
+    background: white;
+    color: #0A2540;
+}
+
+.card_info:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.12);
+}
+
+.secao.light .card_info:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card_info h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+/* BOTÃO MODERNO */
+.btn_secao {
+    margin-top: 25px;
+    padding: 12px 25px;
+    border: none;
+    background: #16E28A;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn_secao:hover {
+    transform: scale(1.05);
+}
+
+/* CAIXA DA CALCULADORA */
+.calc_box {
+    background: rgba(255,255,255,0.08);
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.home_bot {
+    display: flex;
+    align-items: center; /* 👈 centraliza verticalmente tudo */
+    gap: 10px;
+}
+
+/* bloco quando usuário está logado */
+.user_area {
+    display: flex;
+    align-items: center; /* 👈 centraliza texto e botão */
+    gap: 12px;
+}
+
+/* texto "Olá usuário" */
+.user_name {
+    color: white;
+    font-weight: 500;
+}
+
+.button_log.sair {
+    background-color: #e63946; /* vermelho bonito */
+    color: white;
+}
+
+.button_log.sair:hover {
+    background-color: #c92a36;
 }
