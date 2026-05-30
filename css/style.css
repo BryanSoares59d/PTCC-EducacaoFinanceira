@@ -1,514 +1,807 @@
+/* =========================
+   RESET
+========================= */
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family: "Inter", sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    background:#fff;
+    overflow-x:hidden;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
+
 header{
-    z-index: 1000;
-    background: #0A2540;
     position: fixed;
-    top: 0;
-    width: 100%;
-    height: 80px;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: calc(100% - 60px);
+    max-width: 1400px;
+
+    height: 85px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+
+    padding: 0 35px;
+
+    background: rgba(10, 37, 64, 0.75);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 24px;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.20),
+    0 0 0 1px rgba(255,255,255,.03);
+
+    z-index: 9999;
+
+    transition: .3s;
 }
 
 .logo{
-    width: 80px;
+    width: 65px;
+    transition: .3s;
 }
 
-ul{
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
-
-a{
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.home_bot{
-    display: flex;
-    gap: 10px;
-}
-
-.button_log{
-    background-color: #16E28A;
-    color: black;
-    border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.button_log.conectar{
-    background-color: #0D3155;
-    color: white;
-}
-
-/* MAIN */
-main{
-    padding-top: 1px;
-    margin-top: 80px;
-}
-
-/* INTRODUÇÃO */
-.introducao{
-    background-color: #24314C;
-    padding: 50px 20px;
-    
-}
-
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.titulo{
-    color: white;
-    font-size: 40px;
-    font-weight: 800;
-    max-width: 500px;
-    margin-bottom: 20px;
-}
-
-p{
-    color: white;
-    font-size: 18px;
-    max-width: 500px;
-    margin-bottom: 30px;
-}
-
-.intrucao_buttons{
-    display: flex;
-    gap: 15px;
-}
-
-.button_inicio{
-    background-color: #16E28A;
-    color: black;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 25px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.button_inicio.conectar{
-    background-color: #0D3155;
-    color: white;
-}
-
-/* COMO FUNCIONA */
-.como_funciona{
-    background: #eaeaea;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.como_funciona h2{
-    font-size: 28px;
-    margin-bottom: 40px;
-}
-
-.cards{
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 80px;
-}
-
-
-.card{
-    background: #f5f5f5;
-    padding: 30px;
-    border-radius: 12px;
-    width: 260px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.card h3{
-    margin-bottom: 15px;
-}
-
-.card p{
-    font-size: 14px;
-    color: #333;
-    margin-top: 10px;
-}
-
-.card.ativo{
-    border: 2px solid #1e90ff;
-    background: #f5f5f5;
-}
-
-/* NUMEROS */
-.numeros{
-    background: #0A2540;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 35px 20px;
-    border-radius: 12px;
-    max-width: 750px;
-    margin: 0 auto;
-    position: relative;
-    box-shadow: 0 10px 20px rgb(84, 97, 116);
-}
-
-.box{
-    text-align: center;
-}
-
-.box h3{
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.box p{
-    font-size: 13px;
-    color: rgba(255,255,255,0.8);
-}
-
-.divider{
-    width: 1px;
-    height: 50px;
-    background: rgba(255,255,255,0.3);
-}
-
-/* FOOTER */
-footer {
-    background: #0A2540;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-}
-
-.text_footer {
-    margin: 0;
-    text-align: center;
-}
-
-
-@media (max-width: 768px){
-
-    header{
-        padding: 0 20px;
-    }
-
-    ul{
-        display: none;
-    }
-
-    .titulo{
-        font-size: 28px;
-    }
-
-    p{
-        font-size: 16px;
-    }
-
-    .intrucao_buttons{
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cards{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .numeros{
-        flex-direction: column;
-        gap: 20px;
-        top: 30px;
-    }
-
-    .divider{
-        display: none;
-    }
-
-    footer{
-        text-align: center;
-    }
-}
-
-/* FUNDO DA PÁGINA DE REGISTRO */
-.bg-register{
-    background-image: url('../img/fundo.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-/* BOTÃO VOLTAR */
-.rgt_log{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgb(243, 49, 49);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-/* CONTAINER DO FORM */
-.register{
-    width: 100%;
-    max-width: 400px;
-    margin: 120px auto;
-    background: rgba(10, 37, 64, 0.9);
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-/* TÍTULO */
-.register h2{
-    color: white;
-    margin-bottom: 20px;
-}
-
-/* FORM */
-.form_cadastro{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* INPUTS */
-.form_cadastro input,
-.form_cadastro select{
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-}
-
-/* BOTÃO */
-.form_cadastro input[type="submit"]{
-    background: #16E28A;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.form_cadastro input[type="submit"]:hover{
-    opacity: 0.8;
-}
-
-.secao {
-    padding: 80px 20px;
-    text-align: center;
-    background: #f2f2f2;
-}
-
-.secao.dark {
-    background: #24314C;
-    color: white;
-}
-
-.container_secao {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.secao h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.secao p {
-    margin: 0 auto 40px auto;
-    max-width: 600px;
-}
-
-.grid_cards {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.card_info {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    width: 250px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.card_info:hover {
-    transform: translateY(-5px);
-}
-
-.card_info h3 {
-    margin-bottom: 10px;
-    color: #0A2540;
-}
-
-.card_info p {
-    font-size: 14px;
-    color: #555;
-}
-
-/* calculadora */
-.calc_box {
-    background: rgba(255,255,255,0.1);
-    padding: 40px;
-    border-radius: 12px;
-}
-
-.btn_secao {
-    margin-top: 15px;
-    padding: 12px 20px;
-    border: none;
-    background: #16E28A;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.secao {
-    padding: 90px 20px;
-    background: #24314C;
-    color: white;
-}
-
-.secao.light {
-    background: #eaeaea;
-    color: #0A2540;
-}
-
-.container_secao {
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.secao h2 {
-    font-size: 36px;
-    font-weight: 800;
-    margin-bottom: 15px;
-}
-
-.secao p {
-    font-size: 18px;
-    max-width: 650px;
-    margin: 0 auto 50px auto;
-    opacity: 0.9;
-}
-
-/* CARDS MODERNOS */
-.grid_cards {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.card_info {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 30px;
-    border-radius: 16px;
-    width: 260px;
-    transition: 0.3s;
-}
-
-.secao.light .card_info {
-    background: white;
-    color: #0A2540;
-}
-
-.card_info:hover {
-    transform: translateY(-8px);
-    background: rgba(255,255,255,0.12);
-}
-
-.secao.light .card_info:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.card_info h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
-}
-
-/* BOTÃO MODERNO */
-.btn_secao {
-    margin-top: 25px;
-    padding: 12px 25px;
-    border: none;
-    background: #16E28A;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn_secao:hover {
+.logo:hover{
     transform: scale(1.05);
 }
 
-/* CAIXA DA CALCULADORA */
-.calc_box {
-    background: rgba(255,255,255,0.08);
-    padding: 40px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid rgba(255,255,255,0.1);
+nav ul{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    list-style:none;
 }
 
-.home_bot {
-    display: flex;
-    align-items: center; /* 👈 centraliza verticalmente tudo */
-    gap: 10px;
+nav a{
+    position:relative;
+
+    color:rgba(255,255,255,.9);
+
+    text-decoration:none;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:.3s;
 }
 
-/* bloco quando usuário está logado */
-.user_area {
-    display: flex;
-    align-items: center; /* 👈 centraliza texto e botão */
-    gap: 12px;
+nav a:hover{
+    color:#16E28A;
 }
 
-/* texto "Olá usuário" */
-.user_name {
-    color: white;
-    font-weight: 500;
+nav a::after{
+    content:'';
+
+    position:absolute;
+
+    bottom:-8px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:0;
+    height:2px;
+
+    border-radius:50px;
+
+    background:#16E28A;
+
+    transition:.3s;
 }
 
-.button_log.sair {
-    background-color: #e63946; /* vermelho bonito */
-    color: white;
+nav a:hover::after{
+    width:100%;
 }
 
-.button_log.sair:hover {
-    background-color: #c92a36;
+/* =========================
+   BOTÕES HEADER
+========================= */
+
+.home_bot{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.user_area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.user_name{
+    color:white;
+    font-weight:600;
+    font-size:15px;
+}
+
+.button_log{
+    border:none;
+
+    border-radius:50px;
+
+    padding:12px 22px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.button_log:hover{
+    transform:translateY(-3px);
+}
+
+.button_log{
+    background:#16E28A;
+    color:black;
+
+    box-shadow:
+    0 8px 20px rgba(22,226,138,.25);
+}
+
+.button_log.conectar{
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:none;
+}
+
+.button_log.conectar:hover{
+    background:rgba(255,255,255,.15);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    padding-top:120px;
+    min-height:85vh;
+
+    display:flex;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0A2540 0%,
+        #24314C 50%,
+        #0A2540 100%
+    );
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero::before{
+    content:'';
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    border-radius:50%;
+
+    background:
+    rgba(22,226,138,.08);
+
+    right:-200px;
+    top:-150px;
+
+    filter:blur(100px);
+}
+
+.hero_container{
+    width:100%;
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:120px 40px 40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+.hero_content{
+    flex:1;
+}
+
+.tag{
+    display:inline-block;
+
+    background:
+    rgba(22,226,138,.12);
+
+    color:#16E28A;
+
+    border:1px solid rgba(22,226,138,.3);
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    margin-bottom:25px;
+}
+
+.hero_content h1{
+    color:white;
+
+    font-size:clamp(3rem,5vw,5rem);
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+    font-weight:900;
+}
+
+.hero_content p{
+    color:rgba(255,255,255,.85);
+
+    font-size:1.15rem;
+
+    line-height:1.8;
+
+    max-width:650px;
+
+    margin-bottom:35px;
+}
+
+/* =========================
+   BOTÕES GERAIS
+========================= */
+
+.hero_buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn_primary,
+.btn_secondary{
+    border:none;
+    cursor:pointer;
+
+    border-radius:50px;
+
+    padding:15px 30px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.btn_primary{
+    background:#16E28A;
+    color:black;
+}
+
+.btn_primary:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 25px rgba(22,226,138,.35);
+}
+
+.btn_secondary{
+    background:#0D3155;
+    color:white;
+}
+
+.btn_secondary:hover{
+    transform:translateY(-3px);
+}
+
+/* =========================
+   DASHBOARD CARD
+========================= */
+
+.hero_card{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+}
+
+.card_dashboard{
+    width:420px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    border-radius:24px;
+
+    padding:35px;
+
+    box-shadow:
+    0 25px 50px rgba(0,0,0,.25);
+}
+
+.saldo span,
+.dashboard_info span{
+    color:rgba(255,255,255,.7);
+}
+
+.saldo h2{
+    color:#16E28A;
+
+    margin-top:8px;
+
+    font-size:2.6rem;
+}
+
+.dashboard_info{
+    margin-top:40px;
+
+    display:flex;
+    justify-content:space-between;
+}
+
+.dashboard_info h3{
+    color:white;
+    margin-top:8px;
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+section{
+    padding:70px 20px;
+}
+
+.section_title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section_title h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.section_title p{
+    color:#666;
+    max-width:650px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* =========================
+   BENEFÍCIOS
+========================= */
+
+.beneficios{
+    background:#f8fafc;
+}
+
+.beneficios_grid{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+}
+
+.beneficio_card{
+    width:280px;
+
+    padding:30px;
+
+    background:white;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    border:1px solid rgba(10,37,64,.08);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+}
+
+.beneficio_card:hover{
+    transform:translateY(-10px);
+}
+
+.beneficio_card h3{
+    color:#0A2540;
+    margin-bottom:15px;
+}
+
+.beneficio_card p{
+    color:#555;
+    line-height:1.7;
+}
+
+/* =========================
+   COMO FUNCIONA
+========================= */
+
+.steps{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.step_card{
+    width:320px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    text-align:center;
+
+    transition:.35s;
+}
+
+.step_card:hover{
+    transform:translateY(-10px);
+}
+
+.step_number{
+    width:70px;
+    height:70px;
+
+    margin:auto auto 25px;
+
+    border-radius:50%;
+
+    background:#16E28A;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:800;
+    font-size:1.3rem;
+}
+
+/* =========================
+   ESTATÍSTICAS
+========================= */
+
+.estatisticas{
+    background:
+    linear-gradient(
+        135deg,
+        #0A2540,
+        #24314C
+    );
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:30px;
+
+    text-align:center;
+}
+
+.estatistica h2{
+    color:#16E28A;
+    font-size:3rem;
+}
+
+.estatistica p{
+    color:white;
+    margin-top:10px;
+}
+
+/* =========================
+   EDUCAÇÃO E INVESTIMENTOS
+========================= */
+
+.section_light{
+    background:#f5f7fa;
+}
+
+.cards_grid{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.info_card{
+    width:300px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+}
+
+.info_card:hover{
+    transform:translateY(-10px);
+}
+
+.info_card h3{
+    color:#0A2540;
+    margin-bottom:15px;
+}
+
+.info_card p{
+    color:#555;
+    line-height:1.7;
+}
+
+/* =========================
+   CALCULADORA
+========================= */
+
+.section_dark{
+    background:#24314C;
+}
+
+.section_dark .section_title h2{
+    color:white;
+}
+
+.section_dark .section_title p{
+    color:rgba(255,255,255,.8);
+}
+
+.calc_box{
+    max-width:700px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:50px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+}
+
+.calc_box h3{
+    color:white;
+    margin-bottom:20px;
+}
+
+.calc_box p{
+    color:rgba(255,255,255,.85);
+    margin-bottom:30px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    background:
+    linear-gradient(
+        135deg,
+        #0A2540,
+        #24314C
+    );
+
+    text-align:center;
+}
+
+.cta_content{
+    max-width:800px;
+    margin:auto;
+}
+
+.cta_content h2{
+    color:white;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.cta_content p{
+    color:rgba(255,255,255,.85);
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#081b30;
+
+    padding:35px 20px;
+}
+
+.footer_container{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.footer_logo{
+    width:65px;
+}
+
+.footer_container p{
+    color:rgba(255,255,255,.75);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:992px){
+
+    .hero_container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero_content p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero_buttons{
+        justify-content:center;
+    }
+
+    .card_dashboard{
+        width:100%;
+        max-width:450px;
+    }
+}
+
+@media(max-width:768px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .home_bot{
+        gap:8px;
+    }
+
+    .button_log{
+        padding:10px 15px;
+        font-size:13px;
+    }
+
+    .section_title h2{
+        font-size:2rem;
+    }
+
+    .cta_content h2{
+        font-size:2rem;
+    }
+
+    .estatistica h2{
+        font-size:2.3rem;
+    }
+
+    .hero_content h1{
+        font-size:2.8rem;
+    }
+}
+
+@media(max-width:500px){
+
+    .hero_container{
+        padding:120px 20px 40px;
+    }
+
+    .saldo h2{
+        font-size:2rem;
+    }
+
+    .dashboard_info{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .calc_box{
+        padding:30px;
+    }
+}
+
+.info_card,
+.beneficio_card,
+.step_card{
+    background:#fff;
+    border:1px solid rgba(10,37,64,.08);
+    border-radius:24px;
+
+    padding:30px;
+
+    min-height:230px;
+
+    box-shadow:
+    0 8px 30px rgba(0,0,0,.06);
+
+    transition:.35s ease;
+}
+
+.info_card:hover,
+.beneficio_card:hover,
+.step_card:hover{
+    transform:translateY(-10px);
+
+    border-color:#16E28A;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.12);
 }

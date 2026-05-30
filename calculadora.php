@@ -1,10 +1,30 @@
 <?php
 session_start();
+require_once("conexao.php");
 
 if (!isset($_SESSION['id'])) {
     header("Location: login.php");
     exit();
 }
+
+$usuario_id = $_SESSION['id'];
+
+$sql = "
+SELECT
+SUM(CASE WHEN tipo='entrada' THEN valor ELSE 0 END)
+-
+SUM(CASE WHEN tipo='saida' THEN valor ELSE 0 END)
+AS saldo
+FROM movimentacoes
+WHERE usuario_id = ?
+";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$usuario_id]);
+
+$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$saldo = $resultado['saldo'] ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +79,9 @@ if (!isset($_SESSION['id'])) {
     <section class="cards">
       <div class="card">
         <h4>Saldo Atual</h4>
-        <p class="green">R$ 5.506</p>
+        <p class="green">
+          R$ <?php echo number_format($saldo, 2, ',', '.'); ?>
+        </p>
       </div>
 
       <div class="card">
@@ -81,120 +103,359 @@ if (!isset($_SESSION['id'])) {
       </div>
     </section>
 
-    <!-- Content -->
-    <section class="content">
+<section class="controle-financeiro">
 
-      <div class="left">
+    <div class="section-header">
 
-        <div class="box chart">
-          <h3>Visão Geral</h3>
-          <div class="fake-chart"></div>
+        <div>
+            <h2>💰 Controle Financeiro</h2>
+            <p>Cadastre receitas e despesas para acompanhar suas finanças.</p>
         </div>
 
-        <div class="box">
-          <div class="box-header">
-            <h3>Últimas transações</h3>
-            <span>Ver mês →</span>
-          </div>
+        <button class="btn-movimentacao" onclick="abrirModal()">
+            ➕ Nova Movimentação
+        </button>
 
-          <ul class="transactions">
-            <li><span>➕ Salário</span><span class="green">+ R$ 1.500</span></li>
-            <li><span>➕ Transferência</span><span class="green">+ R$ 600</span></li>
-            <li><span>➖ Alimentação</span><span class="red">- R$ 450</span></li>
-            <li><span>➖ Lazer</span><span class="red">- R$ 200</span></li>
-          </ul>
-        </div>
+    </div>
 
-      </div>
-
-      <div class="box">
-
-<h3>💰 Controle Financeiro</h3>
-
-<button class="btn_secao" onclick="abrirModal()">Adicionar movimentação</button>
-
-</div>
+</section>
 
 <!-- MODAL -->
+
 <div id="modalFinanceiro" class="modal">
 
-<div class="modal_content">
+    <div class="modal_content">
 
-  <h2>Nova Movimentação</h2>
+        <div class="modal_top">
 
-  <form method="POST" action="adicionar_movimento.php">
+            <h2>Nova Movimentação</h2>
 
-    <select name="tipo" id="tipo" required onchange="mudarCategoria()">
-        <option value="entrada">💰 Entrada (ganho)</option>
-        <option value="saida">💸 Saída (gasto)</option>
-    </select>
+            <button
+                class="close_btn"
+                onclick="fecharModal()">
+                ✕
+            </button>
 
-    <input type="number" step="0.01" name="valor" placeholder="Valor (R$)" required>
+        </div>
 
-    <input type="text" name="descricao" placeholder="Descrição" required>
+        <form method="POST" action="processa_movimentacao.php">
 
-    <select name="categoria" id="categoria" required></select>
+            <div class="campo">
 
-    <button class="btn_secao" type="submit">Salvar</button>
+                <label>Tipo</label>
 
-  </form>
+                <select
+                    name="tipo"
+                    id="tipo"
+                    required
+                    onchange="mudarCategoria()">
 
-    <button class="close_btn" onclick="fecharModal()">Fechar</button>
+                    <option value="entrada">
+                      Entrada
+                    </option>
+
+                    <option value="saida">
+                      Saída
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Valor (R$)</label>
+
+                <input
+                    type="number"
+                    step="0.01"
+                    name="valor"
+                    required>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Descrição</label>
+
+                <input
+                    type="text"
+                    name="descricao"
+                    required>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Categoria</label>
+
+                <select
+                    name="categoria"
+                    id="categoria"
+                    required>
+
+                </select>
+
+            </div>
+
+            <button
+                class="btn-salvar"
+                type="submit">
+
+                Salvar Movimentação
+
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
 
-</div>
+<!-- HERO DA CALCULADORA -->
+<section class="hero-calculadora">
 
-    </section>
+    <div class="hero-text">
 
-    <footer>2025 © EtecMCM</footer>
+        <span class="badge">
+            📈 Planejamento Financeiro
+        </span>
 
-  </main>
-</div>
+        <h1>
+            Simule seus investimentos e descubra quanto seu dinheiro pode render.
+        </h1>
+
+        <p>
+            Utilize nossa calculadora de juros compostos para planejar seus objetivos financeiros e visualizar seu crescimento patrimonial ao longo do tempo.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- CARDS INFORMATIVOS -->
+<section class="info-cards">
+
+    <div class="info-card">
+        <span>💰</span>
+        <h3>Investimento Inicial</h3>
+        <p>Comece com qualquer valor e acompanhe sua evolução.</p>
+    </div>
+
+    <div class="info-card">
+        <span>📅</span>
+        <h3>Aportes Mensais</h3>
+        <p>Adicione contribuições mensais ao cálculo.</p>
+    </div>
+
+    <div class="info-card">
+        <span>📈</span>
+        <h3>Juros Compostos</h3>
+        <p>Visualize o crescimento do seu patrimônio.</p>
+    </div>
+
+</section>
+
+<!-- CALCULADORA -->
+<section class="content">
+
+    <div class="calculadora-box">
+
+        <div class="titulo-calculadora">
+            <h2>💎 Calculadora de Juros Compostos</h2>
+
+            <p class="subtitle">
+                Planeje seus investimentos e descubra quanto seu dinheiro pode render no futuro.
+            </p>
+        </div>
+
+        <div class="form-grid">
+
+            <div class="input-group">
+                <label>💰 Valor Inicial (R$)</label>
+                <input
+                    type="number"
+                    id="valorInicial"
+                    placeholder="Ex: 1000"
+                >
+            </div>
+
+            <div class="input-group">
+                <label>📅 Aporte Mensal (R$)</label>
+                <input
+                    type="number"
+                    id="aporteMensal"
+                    placeholder="Ex: 200"
+                >
+            </div>
+
+            <div class="input-group">
+                <label>📈 Taxa de Juros (% ao mês)</label>
+                <input
+                    type="number"
+                    id="juros"
+                    placeholder="Ex: 1"
+                >
+            </div>
+
+            <div class="input-group">
+                <label>⏳ Tempo (meses)</label>
+                <input
+                    type="number"
+                    id="meses"
+                    placeholder="Ex: 12"
+                >
+            </div>
+
+        </div>
+
+        <button
+            class="btn-calcular"
+            onclick="calcularInvestimento()"
+        >
+            🚀 Simular Investimento
+        </button>
+
+        <!-- RESULTADOS -->
+
+        <div class="resultado">
+
+            <div class="resultado-card">
+
+                <div class="icone-resultado">
+                    💵
+                </div>
+
+                <h4>Total Investido</h4>
+
+                <p id="investido">
+                    R$ 0,00
+                </p>
+
+            </div>
+
+            <div class="resultado-card">
+
+                <div class="icone-resultado">
+                    📊
+                </div>
+
+                <h4>Juros Ganhos</h4>
+
+                <p id="jurosGanhos">
+                    R$ 0,00
+                </p>
+
+            </div>
+
+            <div class="resultado-card destaque">
+
+                <div class="icone-resultado">
+                    🏆
+                </div>
+
+                <h4>Patrimônio Final</h4>
+
+                <p id="resultadoFinal">
+                    R$ 0,00
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- FRASE MOTIVACIONAL -->
+
+        <div class="frase-financeira">
+
+            <h3>💡 Dica Financeira</h3>
+
+            <p>
+                Quanto mais cedo você começar a investir,
+                maior será o efeito dos juros compostos sobre seu patrimônio.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 <script>
+
 const categorias = {
+
     entrada: [
-        {value: "salario", text: "Salário"},
-        {value: "bonus", text: "Bônus"},
-        {value: "investimento", text: "Investimento"},
-        {value: "outros", text: "Outros"}
+        { value: "salario", text: "💵 Salário" },
+        { value: "bonus", text: "🎁 Bônus" },
+        { value: "freelance", text: "💻 Freelance" },
+        { value: "investimentos", text: "📈 Investimentos" },
+        { value: "outros", text: "📦 Outros" }
     ],
+
     saida: [
-        {value: "alimentacao", text: "Alimentação"},
-        {value: "contas", text: "Contas"},
-        {value: "lazer", text: "Lazer"},
-        {value: "transporte", text: "Transporte"},
-        {value: "outros", text: "Outros"}
+        { value: "alimentacao", text: "🍔 Alimentação" },
+        { value: "transporte", text: "🚗 Transporte" },
+        { value: "moradia", text: "🏠 Moradia" },
+        { value: "lazer", text: "🎮 Lazer" },
+        { value: "saude", text: "🏥 Saúde" },
+        { value: "educacao", text: "📚 Educação" },
+        { value: "contas", text: "🧾 Contas" },
+        { value: "outros", text: "📦 Outros" }
     ]
+
 };
 
 function mudarCategoria() {
-    const tipo = document.getElementById("tipo").value;
-    const select = document.getElementById("categoria");
+
+    const tipo =
+        document.getElementById("tipo").value;
+
+    const select =
+        document.getElementById("categoria");
 
     select.innerHTML = "";
 
-    categorias[tipo].forEach(cat => {
-        const option = document.createElement("option");
-        option.value = cat.value;
-        option.textContent = cat.text;
+    categorias[tipo].forEach(categoria => {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            categoria.value;
+
+        option.textContent =
+            categoria.text;
+
         select.appendChild(option);
+
     });
+
 }
 
-// inicia ao abrir modal
 function abrirModal() {
-    document.getElementById("modalFinanceiro").style.display = "flex";
-    mudarCategoria(); // garante categoria correta ao abrir
+
+    document.getElementById(
+        "modalFinanceiro"
+    ).style.display = "flex";
+
+    mudarCategoria();
+
 }
 
-function fecharModal() {
-    document.getElementById("modalFinanceiro").style.display = "none";
+function fecharModal() {  
+
+    document.getElementById(
+        "modalFinanceiro"
+    ).style.display = "none";
+
 }
 
-// inicia padrão
-document.addEventListener("DOMContentLoaded", mudarCategoria);
+document.addEventListener(
+    "DOMContentLoaded",
+    mudarCategoria
+);
+
 </script>
 
 </body>
