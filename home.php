@@ -11,7 +11,7 @@ session_start();
     <title>FinControl</title>
 
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="nav.php">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
@@ -28,6 +28,7 @@ session_start();
             <li><a href="#inicio">Início</a></li>
             <li><a href="#educacao">Educação</a></li>
             <li><a href="#calculadora">Calculadora</a></li>
+            <li><a href="carteira.php">Carteira</a></li>
             <li><a href="#investimentos">Investimentos</a></li>
         </ul>
     </nav>
