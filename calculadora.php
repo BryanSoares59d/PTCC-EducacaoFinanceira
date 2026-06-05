@@ -48,6 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
+<?php
+
+include_once 'navbar.php';
+
+?>
+
 <div class="container">
 <main class="main">
 
@@ -65,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </section>
 
 <!-- FORM -->
-<section class="content">
+<section class="content" id="content">
 
 <div class="calculadora-box">
 
@@ -73,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>💎 Calculadora de Juros Compostos</h2>
 </div>
 
-<form method="post">
+<form method="post" action="#content">
 <div class="form-grid">
 
     <div class="input-group">
@@ -98,8 +104,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </div>
 
-<button type="submit">Calcular</button>
+    <button type="submit" class="btn-calcular">
+        Calcular
+    </button>
 </form>
+
+<div class="info-aporte">
+    <span>Como a simulação funciona</span>
+
+    <p>
+        Nesta calculadora, os aportes mensais são considerados no
+        <strong>início de cada mês</strong>. Isso significa que cada novo
+        aporte começa a render juros imediatamente no mês em que é realizado,
+        simulando um cenário em que o investimento é feito logo no início do período.
+    </p>
+</div>
 
 <!-- RESULTADOS -->
 <div class="resultado">

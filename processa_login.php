@@ -19,7 +19,7 @@ try {
         $_SESSION['nome'] = $usuario['nome'];
         $_SESSION['email'] = $usuario['email'];
 
-        header("Location: calculadora.php");
+        header("Location: home.php");
         exit;
 
     } else {

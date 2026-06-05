@@ -33,16 +33,16 @@ $saldo = $resultado['saldo'] ?? 0;
     <meta charset="UTF-8">
     <title>Dashboard Financeiro</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carteira.css">
 </head>
 <body>
+
+<?php include_once'navbar.php'; ?>
 
 <div class="container">
 
     <!-- Main -->
     <main class="main">
-    
-        <!-- Navbar -->
-        <?php include_once "nav.php"; ?>
 
         <!-- Cards -->
         <section class="cards">
@@ -87,6 +87,82 @@ $saldo = $resultado['saldo'] ?? 0;
         
     </main>
 </div>
+
+<div id="modalMovimentacao" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Nova Movimentação</h2>
+
+            <button type="button" class="close-modal" onclick="fecharModal()">
+                ✕
+            </button>
+        </div>
+
+        <form action="salvar_movimentacao.php" method="POST">
+            <div class="form-group">
+                <label>Valor</label>
+                <input
+                    type="number"
+                    step="0.01"
+                    name="valor"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Tipo</label>
+
+                <select name="tipo" required>
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Categoria</label>
+
+                <select name="categoria" required>
+                    <option value="" selected disabled>Selecione uma categoria</option>
+
+                    <option value="Alimentação">🍔 Alimentação</option>
+                    <option value="Transporte">🚗 Transporte</option>
+                    <option value="Moradia">🏠 Moradia</option>
+                    <option value="Saúde">🏥 Saúde</option>
+                    <option value="Educação">📚 Educação</option>
+                    <option value="Lazer">🎮 Lazer</option>
+                    <option value="Investimentos">📈 Investimentos</option>
+                    <option value="Salário">💰 Salário</option>
+                    <option value="Freelance">💻 Freelance</option>
+                    <option value="Presente">🎁 Presente</option>
+                    <option value="Outros">📦 Outros</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Descrição</label>
+                <input
+                    type="text"
+                    name="descricao"
+                    placeholder="Ex: Compra do mês"
+                    required
+                >
+            </div>
+
+
+            <button type="submit" class="btn-salvar">
+                Salvar Movimentação
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="js/carteira.js"></script>
 
 </body>
 </html>

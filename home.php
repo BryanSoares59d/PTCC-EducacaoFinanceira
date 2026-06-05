@@ -39,7 +39,10 @@ session_start();
 
             <div class="user_area">
                 <span class="user_name">
-                    Olá, <?php echo $_SESSION['nome']; ?>
+                    <?php
+                    $partes = explode(" ", trim($_SESSION['nome']));
+                    echo "Olá, " . $partes[0] . " " . $partes[count($partes) - 1];
+                    ?>
                 </span>
 
                 <a href="logout.php">

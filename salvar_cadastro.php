@@ -6,6 +6,7 @@ if ($_POST) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+    $confirmar_senha = $_POST['confimar_senha'];
     $telefone = $_POST['telefone'];
     
 
@@ -17,6 +18,10 @@ if ($_POST) {
 // rowCount() retorna o número de linhas retornadas pela query.
 // O query verifica se já existe um usuário com o e-mail fornecido.
 // Se for maior que 0, significa que o e-mail já existe no banco.
+
+    if (!$confirmar_senha == $senha){
+        echo "<script>alert('Erro na confirmação de senha'); window.history.back();</script>";
+    }
     if ($resultado->rowCount() > 0) {
         echo "<script>alert('Este e-mail já está cadastrado!'); window.history.back();</script>";
         exit;
