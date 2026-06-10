@@ -45,12 +45,41 @@ session_start();
                     ?>
                 </span>
 
-                <a href="logout.php">
-                    <button class="button_log sair">
-                        Sair
-                    </button>
-                </a>
-            </div>
+                <div class="user_dropdown">
+
+    <button class="avatar_btn" id="avatarBtn">
+        <img src="img/default.png" class="user" alt="avatar-user">
+    </button>
+
+    <div class="dropdown_menu" id="dropdownMenu">
+
+        <div class="dropdown_header">
+            <strong>
+                <?php
+                $partes = explode(" ", trim($_SESSION['nome']));
+                echo $partes[0] . " " . $partes[count($partes) - 1];
+                ?>
+            </strong>
+            <span>Usuário</span>
+        </div>
+
+        <a href="perfil.php" class="dropdown_item">
+            Ver Perfil
+        </a>
+
+        <a href="configuracoes.php" class="dropdown_item">
+            Configurações
+        </a>
+
+        <hr>
+
+        <a href="logout.php" class="dropdown_item logout">
+            Sair
+        </a>
+
+    </div>
+
+</div>
 
         <?php else: ?>
 
@@ -366,23 +395,6 @@ session_start();
                 <p>
                     Segurança e previsibilidade para seu dinheiro.
                 </p>
-                    <?php if (isset($_SESSION['id'])): ?>
-
-                        <a href="investimentos_RendaFixa.php">
-                            <button class="btn_primary">
-                                Acessar Renda Fixa
-                            </button>
-                        </a>
-
-                        <?php else: ?>
-
-                        <a href="login.php">
-                            <button class="btn_primary">
-                                Acessar Renda Fixa
-                            </button>
-                        </a>
-
-                    <?php endif; ?>
             </div>
 
             <div class="info_card">
@@ -390,24 +402,6 @@ session_start();
                 <p>
                     Potencial de retorno superior no longo prazo.
                 </p>
-
-                <?php if (isset($_SESSION['id'])): ?>
-
-                    <a href="investimentos_RendaVariavel.php">
-                        <button class="btn_primary">
-                            Acessar Renda Variável
-                        </button>
-                    </a>
-
-                    <?php else: ?>
-
-                    <a href="login.php">
-                        <button class="btn_primary">
-                            Acessar Renda Variável
-                        </button>
-                    </a>
-
-                <?php endif; ?>
             </div>
 
             <div class="info_card">
@@ -415,23 +409,6 @@ session_start();
                 <p>
                     Distribua riscos e fortaleça sua carteira.
                 </p>
-                <?php if (isset($_SESSION['id'])): ?>
-
-                    <a href="investimentos_Diversificacao.php">
-                        <button class="btn_primary">
-                            Acessar Diversificação
-                        </button>
-                    </a>
-
-                    <?php else: ?>
-
-                    <a href="login.php">
-                        <button class="btn_primary">
-                            Acessar Diversificação
-                        </button>
-                    </a>
-
-                <?php endif; ?>
             </div>
 
         </div>
@@ -481,6 +458,22 @@ session_start();
     </div>
 
 </footer>
+
+<script>
+
+const avatarBtn = document.getElementById("avatarBtn");
+const dropdownMenu = document.getElementById("dropdownMenu");
+
+avatarBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle("active");
+});
+
+document.addEventListener("click", () => {
+    dropdownMenu.classList.remove("active");
+});
+
+</script>
 
 </body>
 </html>
