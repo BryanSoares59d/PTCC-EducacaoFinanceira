@@ -8,10 +8,10 @@
     <nav>
         <ul>
             <li><a href="home.php">Início</a></li>
-            <li><a href="#educacao">Educação</a></li>
+            <li><a href="home.php">Educação</a></li>
             <li><a href="calculadora.php">Calculadora</a></li>
             <li><a href="carteira.php">Carteira</a></li>
-            <li><a href="#investimentos">Investimentos</a></li>
+            <li><a href="home.php">Investimentos</a></li>
         </ul>
     </nav>
 

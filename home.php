@@ -366,6 +366,23 @@ session_start();
                 <p>
                     Segurança e previsibilidade para seu dinheiro.
                 </p>
+                    <?php if (isset($_SESSION['id'])): ?>
+
+                        <a href="investimentos_RendaFixa.php">
+                            <button class="btn_primary">
+                                Acessar Renda Fixa
+                            </button>
+                        </a>
+
+                        <?php else: ?>
+
+                        <a href="login.php">
+                            <button class="btn_primary">
+                                Acessar Renda Fixa
+                            </button>
+                        </a>
+
+                    <?php endif; ?>
             </div>
 
             <div class="info_card">
@@ -373,6 +390,24 @@ session_start();
                 <p>
                     Potencial de retorno superior no longo prazo.
                 </p>
+
+                <?php if (isset($_SESSION['id'])): ?>
+
+                    <a href="investimentos_RendaVariavel.php">
+                        <button class="btn_primary">
+                            Acessar Renda Variável
+                        </button>
+                    </a>
+
+                    <?php else: ?>
+
+                    <a href="login.php">
+                        <button class="btn_primary">
+                            Acessar Renda Variável
+                        </button>
+                    </a>
+
+                <?php endif; ?>
             </div>
 
             <div class="info_card">
@@ -380,6 +415,23 @@ session_start();
                 <p>
                     Distribua riscos e fortaleça sua carteira.
                 </p>
+                <?php if (isset($_SESSION['id'])): ?>
+
+                    <a href="investimentos_Diversificacao.php">
+                        <button class="btn_primary">
+                            Acessar Diversificação
+                        </button>
+                    </a>
+
+                    <?php else: ?>
+
+                    <a href="login.php">
+                        <button class="btn_primary">
+                            Acessar Diversificação
+                        </button>
+                    </a>
+
+                <?php endif; ?>
             </div>
 
         </div>
