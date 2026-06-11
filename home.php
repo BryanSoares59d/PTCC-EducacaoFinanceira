@@ -11,7 +11,6 @@ session_start();
     <title>FinControl</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="nav.php">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 

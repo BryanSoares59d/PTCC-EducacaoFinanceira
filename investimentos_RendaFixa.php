@@ -13,7 +13,7 @@ if (!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <title>Dashboard Financeiro</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/investimento.css">
+    <link rel="stylesheet" href="css/investimentos.css">
 </head>
 <body>
 
