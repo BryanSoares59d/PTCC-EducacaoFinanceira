@@ -16,90 +16,10 @@ session_start();
 
 <body>
 
-<header>
-
-    <a href="home.php">
-        <img class="logo" src="img/logo.png" alt="Logo">
-    </a>
-
-    <nav>
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#educacao">Educação</a></li>
-            <li><a href="#calculadora">Calculadora</a></li>
-            <li><a href="carteira.php">Carteira</a></li>
-            <li><a href="#investimentos">Investimentos</a></li>
-        </ul>
-    </nav>
-
-    <div class="home_bot">
-
-        <?php if (isset($_SESSION['id'])): ?>
-
-            <div class="user_area">
-                <span class="user_name">
-                    <?php
-                    $partes = explode(" ", trim($_SESSION['nome']));
-                    echo "Olá, " . $partes[0] . " " . $partes[count($partes) - 1];
-                    ?>
-                </span>
-
-                <div class="user_dropdown">
-
-    <button class="avatar_btn" id="avatarBtn">
-        <img src="img/default.png" class="user" alt="avatar-user">
-    </button>
-
-    <div class="dropdown_menu" id="dropdownMenu">
-
-        <div class="dropdown_header">
-            <strong>
-                <?php
-                $partes = explode(" ", trim($_SESSION['nome']));
-                echo $partes[0] . " " . $partes[count($partes) - 1];
-                ?>
-            </strong>
-            <span>Usuário</span>
-        </div>
-
-        <a href="perfil.php" class="dropdown_item">
-            Ver Perfil
-        </a>
-
-        <a href="configuracoes.php" class="dropdown_item">
-            Configurações
-        </a>
-
-        <hr>
-
-        <a href="logout.php" class="dropdown_item logout">
-            Sair
-        </a>
-
-    </div>
-
-</div>
-
-        <?php else: ?>
-
-            <a href="cadastro.php">
-                <button class="button_log">
-                    Registrar
-                </button>
-            </a>
-
-            <a href="login.php">
-                <button class="button_log conectar">
-                    Entrar
-                </button>
-            </a>
-
-        <?php endif; ?>
-
-    </div>
-
-</header>
-
+    <?php 
+        include_once 'navbar.php';
+    ?>
+    
 <main>
 
     <!-- HERO -->

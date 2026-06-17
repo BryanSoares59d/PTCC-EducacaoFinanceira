@@ -123,6 +123,22 @@ nav a:hover::after{
     gap:12px;
 }
 
+.user{
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.user_dropdown:hover .dropdown_menu {
+    display: block;
+}
+
+.dropdown_menu{
+    display: none;
+    display: flex;
+    background-color: white;
+}
+
 .user_area{
     display:flex;
     align-items:center;
