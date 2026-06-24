@@ -10,7 +10,7 @@
     <nav>
         <ul>
             <li><a href="home.php">Início</a></li>
-            <li><a href="home.php">Educação</a></li>
+            <li><a href="#Educacao">Educação</a></li>
             <li><a href="calculadora.php">Calculadora</a></li>
             <li><a href="carteira.php">Carteira</a></li>
             <li><a href="home.php">Investimentos</a></li>
