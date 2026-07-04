@@ -100,7 +100,7 @@ $saldo = $resultado['saldo'] ?? 0;
             </button>
         </div>
 
-        <form action="salvar_movimentacao.php" method="POST">
+        <form action="processa_movimentacao.php" method="POST">
             <div class="form-group">
                 <label>Valor</label>
                 <input
