@@ -182,3 +182,100 @@ nav a:hover::after{
         font-size:13px;
     }
 }
+
+/* =========================
+   DROPDOWN DO USUÁRIO
+========================= */
+
+.user_dropdown{
+    position: relative;
+}
+
+.user_dropdown img{
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+    object-fit: cover;
+    width: 45px;
+    height: 45px;
+}
+
+.user_dropdown img:hover{
+    transform: scale(1.05);
+}
+
+.dropdown_menu{
+    display: none;
+    opacity: 0;
+
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+
+    min-width: 220px;
+
+    background: rgba(10, 37, 64, 0.95);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.25),
+        0 0 0 1px rgba(255,255,255,.03);
+
+    padding: 10px;
+
+    transition: .3s;
+    z-index: 9999;
+}
+
+.dropdown_menu.active{
+    display: block;
+    opacity: 1;
+}
+
+.dropdown_header{
+    padding: 10px 12px;
+    color: #0A2540;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    margin-bottom: 6px;
+}
+
+.dropdown_item{
+    display: block;
+
+    padding: 10px 12px;
+
+    color: #333;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    border-radius: 10px;
+
+    transition: .3s;
+}
+
+.dropdown_item:hover{
+    background: rgba(22,226,138,.1);
+    color: #16E28A;   /* mantém o verde no hover, mas mais sutil */
+}
+
+.dropdown_menu hr{
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.08);
+    margin: 6px 0;
+}
+
+.dropdown_item.logout{
+    color: #ff6b6b;
+}
+
+.dropdown_item.logout:hover{
+    background: rgba(255,107,107,.1);
+    color: #ff6b6b;
+}

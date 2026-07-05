@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-perfil.css">
+
 <header>
-    
+
     <a href="home.php">
         <img class="logo" src="img/logo.png" alt="Logo">
     </a>
@@ -24,46 +25,46 @@
             <div class="user_area">
                 <span class="user_name">
                     <?php
-                    $partes = explode(" ", trim($_SESSION['nome']));
+                    $partes = explode(" ", trim($_SESSION['usuario']['nome']));
                     echo "Olá, " . $partes[0] . " " . $partes[count($partes) - 1];
                     ?>
                 </span>
 
                 <div class="user_dropdown">
 
-                <a href="#" id="avatarBtn">
-                    <img src="img/default.png" class="user" alt="avatar-user">
-                </a>
+                    <a href="#" id="avatarBtn">
+                        <img src="<?= $_SESSION['usuario']['foto']; ?>" width="100">
+                    </a>
 
+                    <div class="dropdown_menu" id="dropdownMenu">
 
-    <div class="dropdown_menu" id="dropdownMenu">
+                        <div class="dropdown_header">
+                            <strong>
+                                <?php
+                                $partes = explode(" ", trim($_SESSION['usuario']['nome']));
+                                echo $partes[0] . " " . $partes[count($partes) - 1];
+                                ?>
+                            </strong>
+                        </div>
 
-        <div class="dropdown_header">
-            <strong>
-                <?php
-                $partes = explode(" ", trim($_SESSION['nome']));
-                echo $partes[0] . " " . $partes[count($partes) - 1];
-                ?>
-            </strong>
-        </div>
+                        <a href="perfil.php" class="dropdown_item">
+                            Ver Perfil
+                        </a>
 
-        <a href="perfil.php" class="dropdown_item">
-            Ver Perfil
-        </a>
+                        <a href="configuracoes.php" class="dropdown_item">
+                            Configurações
+                        </a>
 
-        <a href="configuracoes.php" class="dropdown_item">
-            Configurações
-        </a>
+                        <hr>
 
-        <hr>
+                        <a href="logout.php" class="dropdown_item logout">
+                            Sair
+                        </a>
 
-        <a href="logout.php" class="dropdown_item logout">
-            Sair
-        </a>
+                    </div>
 
-    </div>
-
-</div>
+                </div>
+            </div>
 
         <?php else: ?>
 
@@ -90,13 +91,15 @@
 const avatarBtn = document.getElementById("avatarBtn");
 const dropdownMenu = document.getElementById("dropdownMenu");
 
-avatarBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    dropdownMenu.classList.toggle("active");
-});
+if (avatarBtn && dropdownMenu) {
+    avatarBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("active");
+    });
 
-document.addEventListener("click", () => {
-    dropdownMenu.classList.remove("active");
-});
+    document.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+    });
+}
 
 </script>
