@@ -18,72 +18,80 @@
         </ul>
     </nav>
 
-    <div class="home_bot">
+<div class="home_bot">
+    <?php
+        $fotoUsuario = (!empty($_SESSION['foto']))
+        ? $_SESSION['foto']
+        : 'img/avatar-default.png';
+    ?>
 
-        <?php if (isset($_SESSION['id'])): ?>
+    <?php if (isset($_SESSION['id'])): ?>
 
-            <div class="user_area">
-                <span class="user_name">
-                    <?php
-                    $partes = explode(" ", trim($_SESSION['usuario']['nome']));
-                    echo "Olá, " . $partes[0] . " " . $partes[count($partes) - 1];
-                    ?>
-                </span>
+        <div class="user_area">
 
-                <div class="user_dropdown">
+            <div class="user_dropdown">
 
-                    <a href="#" id="avatarBtn">
-                        <img src="<?= $_SESSION['usuario']['foto']; ?>" width="100">
-                    </a>
+                <a href="#" id="avatarBtn" class="avatar_btn">
+                    <img src="<?= $_SESSION['foto']; ?>" alt="Avatar">
+                </a>
 
-                    <div class="dropdown_menu" id="dropdownMenu">
+                <div class="dropdown_menu" id="dropdownMenu">
 
-                        <div class="dropdown_header">
+                    <div class="dropdown_header">
+
+                        <img src="<?= $_SESSION['foto']; ?>" alt="Avatar">
+
+                        <div>
                             <strong>
                                 <?php
-                                $partes = explode(" ", trim($_SESSION['usuario']['nome']));
+                                $partes = explode(" ", trim($_SESSION['nome']));
                                 echo $partes[0] . " " . $partes[count($partes) - 1];
                                 ?>
                             </strong>
+
+                            <small>Usuário</small>
+
                         </div>
-
-                        <a href="perfil.php" class="dropdown_item">
-                            Ver Perfil
-                        </a>
-
-                        <a href="configuracoes.php" class="dropdown_item">
-                            Configurações
-                        </a>
-
-                        <hr>
-
-                        <a href="logout.php" class="dropdown_item logout">
-                            Sair
-                        </a>
 
                     </div>
 
+                    <a href="perfil.php" class="dropdown_item">
+                        Ver Perfil
+                    </a>
+
+                    <a href="configuracoes.php" class="dropdown_item">
+                        Configurações
+                    </a>
+
+                    <hr>
+
+                    <a href="logout.php" class="dropdown_item logout">
+                        Sair
+                    </a>
+
                 </div>
+
             </div>
 
-        <?php else: ?>
+        </div>
 
-            <a href="cadastro.php">
-                <button class="button_log">
-                    Registrar
-                </button>
-            </a>
+    <?php else: ?>
 
-            <a href="login.php">
-                <button class="button_log conectar">
-                    Entrar
-                </button>
-            </a>
+        <a href="cadastro.php">
+            <button class="button_log">
+                Registrar
+            </button>
+        </a>
 
-        <?php endif; ?>
+        <a href="login.php">
+            <button class="button_log conectar">
+                Entrar
+            </button>
+        </a>
 
-    </div>
+    <?php endif; ?>
 
+</div>
 </header>
 
 <script>
@@ -92,14 +100,24 @@ const avatarBtn = document.getElementById("avatarBtn");
 const dropdownMenu = document.getElementById("dropdownMenu");
 
 if (avatarBtn && dropdownMenu) {
-    avatarBtn.addEventListener("click", (e) => {
+
+    avatarBtn.addEventListener("click", function(e) {
+        e.preventDefault();
         e.stopPropagation();
         dropdownMenu.classList.toggle("active");
     });
 
-    document.addEventListener("click", () => {
-        dropdownMenu.classList.remove("active");
+    document.addEventListener("click", function(e) {
+
+        if (
+            !avatarBtn.contains(e.target) &&
+            !dropdownMenu.contains(e.target)
+        ) {
+            dropdownMenu.classList.remove("active");
+        }
+
     });
+
 }
 
 </script>

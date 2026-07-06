@@ -19,6 +19,7 @@ try {
         $_SESSION['nome'] = $usuario['nome'];
         $_SESSION['email'] = $usuario['email'];
         $_SESSION['telefone'] = $usuario['telefone'];
+        $_SESSION['foto'] = $usuario['foto'];
 
         header("Location: home.php");
         exit;
