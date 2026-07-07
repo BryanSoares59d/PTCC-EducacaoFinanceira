@@ -22,28 +22,38 @@
 
         <?php if (isset($_SESSION['id'])): ?>
 
+            <?php
+            $usuario = $_SESSION['usuario'] ?? [];
+            $nomeCompleto = trim($usuario['nome'] ?? '');
+            $partes = $nomeCompleto !== '' ? explode(" ", $nomeCompleto) : ['Usuário'];
+            $primeiroNome = $partes[0];
+            $ultimoNome = $partes[count($partes) - 1];
+            $inicial = mb_strtoupper(mb_substr($primeiroNome, 0, 1));
+            $temFoto = !empty($usuario['foto']);
+            ?>
+
             <div class="user_area">
                 <span class="user_name">
-                    <?php
-                    $partes = explode(" ", trim($_SESSION['usuario']['nome']));
-                    echo "Olá, " . $partes[0] . " " . $partes[count($partes) - 1];
-                    ?>
+                    Olá, <?= htmlspecialchars($primeiroNome . " " . $ultimoNome) ?>
                 </span>
 
                 <div class="user_dropdown">
 
                     <a href="#" id="avatarBtn">
-                        <img src="<?= $_SESSION['usuario']['foto']; ?>" width="100">
+                        <?php if ($temFoto): ?>
+                            <img src="<?= htmlspecialchars($usuario['foto']) ?>" class="avatar_img">
+                        <?php else: ?>
+                            <div class="avatar_placeholder">
+                                <?= htmlspecialchars($inicial) ?>
+                            </div>
+                        <?php endif; ?>
                     </a>
 
                     <div class="dropdown_menu" id="dropdownMenu">
 
                         <div class="dropdown_header">
                             <strong>
-                                <?php
-                                $partes = explode(" ", trim($_SESSION['usuario']['nome']));
-                                echo $partes[0] . " " . $partes[count($partes) - 1];
-                                ?>
+                                <?= htmlspecialchars($primeiroNome . " " . $ultimoNome) ?>
                             </strong>
                         </div>
 
@@ -88,18 +98,23 @@
 
 <script>
 
-const avatarBtn = document.getElementById("avatarBtn");
-const dropdownMenu = document.getElementById("dropdownMenu");
+(function () {
+    if (window.__navbarInitialized) return;
+    window.__navbarInitialized = true;
 
-if (avatarBtn && dropdownMenu) {
-    avatarBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdownMenu.classList.toggle("active");
-    });
+    const avatarBtn = document.getElementById("avatarBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
 
-    document.addEventListener("click", () => {
-        dropdownMenu.classList.remove("active");
-    });
-}
+    if (avatarBtn && dropdownMenu) {
+        avatarBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle("active");
+        });
+
+        document.addEventListener("click", () => {
+            dropdownMenu.classList.remove("active");
+        });
+    }
+})();
 
 </script>

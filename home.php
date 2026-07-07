@@ -17,7 +17,7 @@ session_start();
 <body>
 
     <?php 
-        include_once 'navbar.php';
+        include 'navbar.php';
     ?>
     
 <main>
@@ -429,22 +429,6 @@ session_start();
     </div>
 
 </footer>
-
-<script>
-
-const avatarBtn = document.getElementById("avatarBtn");
-const dropdownMenu = document.getElementById("dropdownMenu");
-
-avatarBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    dropdownMenu.classList.toggle("active");
-});
-
-document.addEventListener("click", () => {
-    dropdownMenu.classList.remove("active");
-});
-
-</script>
 
 </body>
 </html>

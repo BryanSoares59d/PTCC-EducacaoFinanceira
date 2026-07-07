@@ -279,3 +279,26 @@ nav a:hover::after{
     background: rgba(255,107,107,.1);
     color: #ff6b6b;
 }
+
+.avatar_img,
+.avatar_placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar_placeholder {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}
+#avatarBtn {
+    text-decoration: none;
+    display: inline-block;
+}
