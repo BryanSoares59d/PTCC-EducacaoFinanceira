@@ -23,6 +23,10 @@ try {
             'telefone' => $usuario['telefone'],
             'foto'     => !empty($usuario['foto']) ? $usuario['foto'] : null,
         ];
+        $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['email'] = $usuario['email'];
+        $_SESSION['telefone'] = $usuario['telefone'];
+        $_SESSION['foto'] = $usuario['foto'];
 
         header("Location: home.php");
         exit;
