@@ -190,17 +190,17 @@ if (!isset($_SESSION['id'])) {
 </footer>
 
 <script>
-    const form          = document.getElementById('upload-form');
-    const slot           = document.getElementById('slot');
-    const slotLabel       = document.getElementById('slot-label');
-    const fileInput       = document.getElementById('file-input');
-    const fileChip         = document.getElementById('file-chip');
-    const fileChipName     = document.getElementById('file-chip-name');
-    const removeBtn        = document.getElementById('file-chip-remove');
-    const submitBtn        = document.getElementById('submit-btn');
-    const statusEl          = document.getElementById('status');
-    const resultadoBox       = document.getElementById('resultado');
-    const resultadoTexto     = document.getElementById('resultado-texto');
+    const form = document.getElementById('upload-form');
+    const slot = document.getElementById('slot');
+    const slotLabel = document.getElementById('slot-label');
+    const fileInput = document.getElementById('file-input');
+    const fileChip = document.getElementById('file-chip');
+    const fileChipName = document.getElementById('file-chip-name');
+    const removeBtn = document.getElementById('file-chip-remove');
+    const submitBtn = document.getElementById('submit-btn');
+    const statusEl = document.getElementById('status');
+    const resultadoBox = document.getElementById('resultado');
+    const resultadoTexto = document.getElementById('resultado-texto');
 
     // >>> ajuste aqui para o endereço do seu backend Python <<<
     const API_URL = 'http://localhost:5000/api/analisar';
