@@ -15,6 +15,7 @@
             <li><a href="calculadora.php">Calculadora</a></li>
             <li><a href="carteira.php">Carteira</a></li>
             <li><a href="home.php">Investimentos</a></li>
+            <li><a href="analisador.php">Analisador</a></li>
         </ul>
     </nav>
 

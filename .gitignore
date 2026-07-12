@@ -1,3 +1,7 @@
 vendor/
 google-config.php
 .env
+venv/
+__pycache__/
+temp/
+*.pyc

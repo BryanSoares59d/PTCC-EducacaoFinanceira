@@ -1,0 +1,167 @@
+/* ============================================================
+   Analisador de Gastos — estilos específicos desta página
+   Assume que css/style.css já define: --primary, cores de
+   section_light / section_dark, fontes, spacing base, etc.
+   Os fallbacks abaixo garantem que funcione mesmo se alguma
+   variável ainda não existir no seu style.css.
+   ============================================================ */
+
+.analisador_box {
+    max-width: 620px;
+    margin: 48px auto 0;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px 36px;
+    box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Slot de upload ---------- */
+
+.upload_slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 44px 20px;
+    border: 2px dashed #cfd8d3;
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--primary, #2E7D5B);
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.upload_slot:hover,
+.upload_slot:focus-within {
+    border-color: var(--primary, #2E7D5B);
+    background: rgba(46, 125, 91, 0.05);
+}
+
+.upload_slot--drag {
+    border-color: var(--primary, #2E7D5B);
+    background: rgba(46, 125, 91, 0.09);
+}
+
+.upload_slot_icon {
+    opacity: 0.85;
+}
+
+.upload_slot_label {
+    font-weight: 600;
+    font-size: 15px;
+    color: #16241c;
+}
+
+.upload_slot_hint {
+    font-size: 12.5px;
+    color: #6b7a71;
+}
+
+/* ---------- Chip do arquivo selecionado ---------- */
+
+.file_chip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 10px 14px;
+    background: #f3f6f4;
+    border: 1px solid #dfe6e2;
+    border-radius: 8px;
+    font-size: 13.5px;
+}
+
+.file_chip_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #16241c;
+}
+
+.file_chip_remove {
+    background: none;
+    border: none;
+    color: #6b7a71;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+}
+
+.file_chip_remove:hover {
+    color: #16241c;
+}
+
+/* ---------- Botão largura total ---------- */
+
+.btn_full {
+    width: 100%;
+    margin-top: 24px;
+    display: block;
+    text-align: center;
+}
+
+.btn_full:disabled {
+    background: #cfd8d3;
+    color: #6b7a71;
+    cursor: not-allowed;
+}
+
+/* ---------- Status de envio ---------- */
+
+.upload_status {
+    min-height: 20px;
+    margin: 14px 0 0;
+    font-size: 13.5px;
+    text-align: center;
+}
+
+.upload_status--pending { color: #6b7a71; }
+.upload_status--ok      { color: var(--primary, #2E7D5B); }
+.upload_status--error   { color: #b3483a; }
+
+/* ---------- Caixa de resultado ---------- */
+
+.resultado_box {
+    margin-top: 28px;
+    padding: 22px 24px;
+    background: #f3f6f4;
+    border-left: 4px solid var(--primary, #2E7D5B);
+    border-radius: 8px;
+    animation: analisador_fade 0.25s ease;
+}
+
+.resultado_box h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #16241c;
+}
+
+.resultado_box p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #3b4a41;
+    white-space: pre-line;
+}
+
+@keyframes analisador_fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 640px) {
+    .analisador_box {
+        margin-top: 32px;
+        padding: 28px 22px;
+        border-radius: 12px;
+    }
+
+    .upload_slot {
+        padding: 32px 14px;
+    }
+}
