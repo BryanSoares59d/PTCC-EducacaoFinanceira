@@ -6,39 +6,60 @@ if ($_POST) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $confirmar_senha = $_POST['confimar_senha'];
+    $confirmar_senha = $_POST['confirmar_senha'];
     $telefone = $_POST['telefone'];
-    
 
-    // Verifica se email já existe
-    $sql = "SELECT id FROM usuarios WHERE email = '$email'";
-    $resultado = $pdo->query($sql);
-    
-// Verifica se a consulta encontrou algum registro com o mesmo e-mail.
-// rowCount() retorna o número de linhas retornadas pela query.
-// O query verifica se já existe um usuário com o e-mail fornecido.
-// Se for maior que 0, significa que o e-mail já existe no banco.
-
-    if (!$confirmar_senha == $senha){
+    if ($senha !== $confirmar_senha) {
         echo "<script>alert('Erro na confirmação de senha'); window.history.back();</script>";
-    }
-    if ($resultado->rowCount() > 0) {
-        echo "<script>alert('Este e-mail já está cadastrado!'); window.history.back();</script>";
         exit;
     }
 
-    // Criptografa a senha
+    // Verifica se o e-mail já existe (com prepared statement, seguro contra SQL Injection)
+    $sql = "SELECT id, senha, provedor FROM usuarios WHERE email = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($usuario) {
+        // Conta existe. Verifica se veio do Google e ainda não tem senha definida.
+        if ($usuario['provedor'] === 'google' && empty($usuario['senha'])) {
+
+            // Em vez de bloquear, aproveita e define a senha nessa conta já existente
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+            $sqlUpdate = "UPDATE usuarios SET senha = ?, provedor = 'ambos' WHERE email = ?";
+            $stmtUpdate = $pdo->prepare($sqlUpdate);
+
+            if ($stmtUpdate->execute([$senhaHash, $email])) {
+                $_SESSION['mensagem'] = "Senha adicionada à sua conta com sucesso! Agora você pode entrar com e-mail e senha.";
+                header("Location: login.php");
+                exit;
+            } else {
+                echo "<script>alert('Erro ao definir senha!'); window.history.back();</script>";
+                exit;
+            }
+
+        } else {
+            // Já existe conta local de verdade (com senha própria) → erro real
+            echo "<script>alert('Este e-mail já está cadastrado!'); window.history.back();</script>";
+            exit;
+        }
+    }
+
+    // E-mail não existe ainda → cria conta nova normalmente
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    // Insere no banco
-    $sql = "INSERT INTO usuarios (nome, email, senha, telefone) 
-            VALUES ('$nome', '$email', '$senhaHash', '$telefone')";
-    
-    if ($pdo->query($sql)) {
+    $sqlInsert = "INSERT INTO usuarios (nome, email, senha, telefone, provedor) 
+                  VALUES (?, ?, ?, ?, 'local')";
+    $stmtInsert = $pdo->prepare($sqlInsert);
+
+    if ($stmtInsert->execute([$nome, $email, $senhaHash, $telefone])) {
         $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
         header("Location: login.php");
+        exit;
     } else {
         echo "<script>alert('Erro ao cadastrar!'); window.history.back();</script>";
+        exit;
     }
 }
 ?>

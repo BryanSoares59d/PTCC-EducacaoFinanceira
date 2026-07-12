@@ -11,11 +11,11 @@ try {
 
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($usuario && password_verify($senha, $usuario['senha'])) {
+    // Verifica se existe usuário E se ele tem senha definida antes de validar
+    if ($usuario && !empty($usuario['senha']) && password_verify($senha, $usuario['senha'])) {
 
         $_SESSION['id'] = $usuario['id'];
 
-        // Monta o array 'usuario' no mesmo formato usado pelo login com Google
         $_SESSION['usuario'] = [
             'id'       => $usuario['id'],
             'nome'     => $usuario['nome'],
@@ -25,6 +25,11 @@ try {
         ];
 
         header("Location: home.php");
+        exit;
+
+    } elseif ($usuario && empty($usuario['senha'])) {
+        // Conta existe, mas foi criada só via Google — não tem senha ainda
+        echo "<script>alert('Esta conta foi criada com Google. Faça login pelo Google ou defina uma senha na tela de cadastro.'); window.history.back();</script>";
         exit;
 
     } else {
