@@ -1,4 +1,4 @@
-# Trilha de Videoaulas — Investimentos (Versão TCC)
+# Trilha de Videoaulas
 
 # 🟢 Renda Fixa
 
